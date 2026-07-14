@@ -401,19 +401,7 @@ body {
     align-items: center;
 }
 
-.feature-card.highlight {
-    background-color: var(--brand-dark);
-    border-color: var(--brand-gold);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-}
-
-.feature-card.highlight h3 {
-    color: var(--text-white);
-}
-
-.feature-card.highlight p {
-    color: #CCCCCC;
-}
+/* .highlight : styles uniquement au hover, pas par défaut */
 
 .feature-card:hover {
     transform: translateY(-8px);
@@ -689,14 +677,7 @@ body {
     /* Increased top padding for description space */
 }
 
-.secret-card.highlight {
-    border-color: var(--brand-gold);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-}
-
-.secret-card.highlight .secret-num {
-    color: rgba(212, 175, 55, 0.15) !important;
-}
+/* .secret-card.highlight : aucun style permanent, le hover global s'applique */
 
 .secret-card:hover {
     transform: translateY(-8px);
@@ -1173,224 +1154,559 @@ body {
 
 
 /* ==========================================================================
-   13. GLOBAL RESPONSIVE DESIGN (REPLACING OLD BLOCK)
+   13. RESPONSIVE DESIGN — COMPLET (Tablet · Mobile · Petit Mobile)
    ========================================================================== */
+
+/* ── TABLET (≤ 1024px) ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
+
+    /* Features : 2 colonnes */
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 
+    /* Secrets : réduire l'espacement */
     .secrets-grid {
-        gap: 20px;
+        gap: 24px;
+    }
+
+    /* Hero : réduire la taille du H1 */
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    /* About : réduire l'image et la bande */
+    .about-image-wrapper {
+        height: 500px;
+    }
+    .about-band-text {
+        font-size: 90px;
+    }
+
+    /* Témoignages : réduire le titre de fond */
+    .testimonials-title-bg {
+        font-size: 60px;
     }
 }
 
-@media (max-width: 968px) {
 
-    /* Existing Hero Responsive */
+/* ── MOBILE LARGE (≤ 768px) ────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* --- TOP BAR --- */
+    .top-bar {
+        font-size: 11px;
+        padding: 10px 12px;
+        line-height: 1.4;
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+        height: 65px;
+    }
+    .logo-light,
+    .logo-dark {
+        height: 40px !important;
+    }
+    .btn-nav {
+        font-size: 11px;
+        padding: 7px 14px;
+    }
+
+    /* --- HERO --- */
+    .hero-section {
+        padding-top: 120px;
+        padding-bottom: 60px;
+        min-height: auto;
+    }
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 40px;
+        gap: 30px;
     }
-
+    .hero-content {
+        max-width: 100%;
+    }
     .hero-content h1 {
-        font-size: 36px;
+        font-size: 32px;
+        letter-spacing: 0;
     }
-
-    .hero-img {
-        max-width: 380px;
+    .sub-hero {
+        font-size: 16px;
     }
-
-    .btn-title {
-        font-size: 18px;
+    .mini-desc {
+        font-size: 14px;
     }
-
-    /* About Section Responsive */
-    .about-container {
-        flex-direction: column;
-        gap: 50px;
+    .badge {
+        font-size: 12px;
         text-align: center;
     }
+    .hero-image-wrapper {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .hero-badge {
+        font-size: 18px;
+        padding: 7px 16px;
+        right: 0;
+    }
+    .btn-primary-wrapper {
+        width: 100%;
+        padding: 14px 20px;
+    }
+    .btn-title {
+        font-size: 17px;
+    }
+    .btn-subtitle {
+        font-size: 12px;
+    }
 
+    /* --- PARTNERS --- */
+    .partners-section {
+        padding: 40px 0;
+    }
+    .partners-grid {
+        gap: 24px 32px;
+    }
+    .partner-logo .logo-svg {
+        height: 30px;
+    }
+
+    /* --- FEATURES --- */
+    .features-section {
+        padding: 70px 0;
+    }
+    .section-header h2 {
+        font-size: 24px;
+    }
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .feature-card {
+        padding: 28px 18px;
+    }
+    .feature-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    .feature-icon-img {
+        width: 32px;
+        height: 32px;
+    }
+    .feature-card h3 {
+        font-size: 13px;
+    }
+    .feature-card p {
+        font-size: 12px;
+    }
+
+    /* --- ABOUT (QUI JE SUIS) — CORRECTION MOBILE --- */
+    .about-section {
+        padding: 60px 0 0 0;
+        overflow: hidden;
+    }
+    .about-container {
+        flex-direction: column;
+        gap: 0;
+        text-align: center;
+        align-items: stretch;
+    }
+    /* TEXTE : pleine largeur, padding latéral pour ne pas coller aux bords */
     .about-content {
         max-width: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0 24px 40px 24px;
+        box-sizing: border-box;
     }
-
     .about-header {
         align-items: center;
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
-
+    /* Badge "QUI JE SUIS" : taille réduite pour mobile */
+    .about-badge {
+        font-size: 36px;
+        letter-spacing: 1px;
+    }
+    .about-subtitle-dark {
+        font-size: 13px;
+    }
+    .about-content p {
+        font-size: 14px;
+        line-height: 1.65;
+        text-align: center;
+        max-width: 480px;
+    }
+    /* WRAPPER IMAGE : hauteur fixe, pleine largeur, pas de débordement */
     .about-image-wrapper {
         width: 100%;
-        max-width: 450px;
-        height: 420px;
-        margin: 0 auto;
+        max-width: 100%;
+        height: 360px;
+        margin: 0;
+        position: relative;
+        flex-shrink: 0;
     }
-
+    /* Rectangle gris de fond : couvre 85% de la largeur depuis la droite */
     .about-bg-grey {
-        height: 330px;
-        bottom: 0;
-        top: auto;
-        width: 82%;
-    }
-
-    .about-gold-band {
-        height: 100px;
+        position: absolute;
         bottom: 0;
         right: 0;
+        width: 85%;
+        height: 280px;
+        top: auto;
+    }
+    /* Bande or JONATHAN : alignée en bas, pleine largeur relative */
+    .about-gold-band {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 85%;
+        height: 80px;
         left: auto;
-        width: 82%;
     }
-
+    /* Texte JONATHAN : réduit pour tenir dans la bande mobile */
     .about-band-text {
-        font-size: 80px;
+        font-size: 58px;
+        line-height: 1;
+        letter-spacing: 0;
     }
-
+    /* Photo du coach : hauteur adaptée, ancrée en bas */
     .about-img {
-        height: 390px;
-        right: 45px;
+        position: absolute;
+        bottom: 0;
+        right: 50px;
+        height: 330px;
+        width: auto;
         left: auto;
         transform: none;
     }
 
-    /* Secrets Grid Responsive */
+    /* --- SECRETS --- */
+    .secrets-section {
+        padding: 80px 20px 60px 20px;
+    }
+    .secrets-section::before,
+    .secrets-section::after {
+        width: 20px;
+    }
+    .secrets-main-title {
+        font-size: 28px !important;
+    }
     .secrets-grid {
         grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: 0 auto 40px auto;
+        max-width: 440px;
+        margin: 60px auto 40px auto;
+        gap: 30px;
+    }
+    .secret-card {
+        padding-top: 60px;
+    }
+    .secret-mockup {
+        margin-top: -60px;
+    }
+    .secret-bg-text,
+    .secret-num {
+        font-size: 52px;
+    }
+    .secret-info-title {
+        font-size: 13px;
+    }
+    .secret-info-text {
+        font-size: 11px;
+    }
+    .secrets-cta {
+        margin-top: 40px;
     }
 
-    /* Join Section Responsive */
+    /* --- JOIN (MULTI-ÉCRANS) --- */
+    .join-section {
+        padding-bottom: 70px;
+    }
     .join-content h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
-
-    .bg-outline-text {
-        font-size: 120px;
-        letter-spacing: 8px;
+    .join-subtitle {
+        font-size: 15px;
     }
-
     .mockup-composition-wrapper {
-        margin-top: -45px;
+        margin-top: -40px;
         margin-bottom: 30px;
     }
-
-    /* Testimonials Responsive */
-    .testimonials-track {
-        grid-template-columns: 1fr;
-        max-width: 450px;
-        margin: 0 auto 30px auto;
-        gap: 40px;
+    .bg-outline-text {
+        font-size: 100px;
+        letter-spacing: 6px;
+    }
+    .deco-icon {
+        font-size: 22px;
     }
 
+    /* --- TÉMOIGNAGES --- */
+    .testimonials-section {
+        padding: 70px 0;
+    }
+    .testimonials-title-bg {
+        font-size: 50px;
+    }
+    .testimonials-title-fg {
+        font-size: 28px;
+        margin-top: -20px;
+        margin-left: 20px;
+    }
+    .testimonials-track {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto 30px auto;
+        gap: 30px;
+        width: 100%;
+    }
     .testimonial-card.active {
         transform: scale(1);
     }
-
     .testimonial-card.active:hover {
         transform: translateY(-5px);
     }
 
-    .testimonials-subtitle {
-        font-size: 32px;
+    /* --- FOOTER --- */
+    .main-footer {
+        padding: 50px 0 30px 0;
+    }
+    .footer-logo-img {
+        height: 34px;
+    }
+    .footer-disclaimer {
+        font-size: 11px;
+    }
+    .footer-links a {
+        font-size: 11px;
     }
 }
 
-@media (max-width: 600px) {
 
-    /* Small Mobile adjustments */
-    .partners-grid {
-        gap: 30px 40px;
+/* ── PETIT MOBILE (≤ 480px) ────────────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* --- HERO --- */
+    .hero-content h1 {
+        font-size: 26px;
+    }
+    .sub-hero {
+        font-size: 13px;
+    }
+    .hero-image-wrapper {
+        max-width: 260px;
+    }
+    .hero-badge {
+        font-size: 15px;
+        padding: 6px 12px;
     }
 
+    /* --- PARTNERS --- */
+    .partners-subtitle {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    .partners-grid {
+        gap: 20px 24px;
+    }
+
+    /* --- FEATURES --- */
     .features-grid {
         grid-template-columns: 1fr;
-        max-width: 320px;
+        max-width: 300px;
         margin: 0 auto;
     }
 
+    /* --- ABOUT --- */
+    .about-content {
+        padding: 0 16px 32px 16px;
+    }
+    .about-badge {
+        font-size: 30px;
+    }
     .about-image-wrapper {
-        height: 350px;
+        height: 290px;
     }
-
     .about-bg-grey {
-        height: 270px;
-        bottom: 0;
-        top: auto;
-        width: 82%;
+        height: 220px;
+        width: 90%;
     }
-
     .about-gold-band {
-        height: 70px;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        height: 60px;
+        width: 90%;
     }
-
     .about-band-text {
-        font-size: 50px;
-        line-height: 50px;
-        margin-left: 10px;
-        transform: scaleY(1.3);
-        transform-origin: center left;
+        font-size: 44px;
+        line-height: 1;
+        letter-spacing: 0;
     }
-
     .about-img {
-        height: 320px;
-        right: 35px;
+        height: 260px;
+        right: 20px;
+        bottom: 0;
     }
 
+    /* --- SECRETS --- */
+    .secrets-section {
+        padding: 70px 12px 50px 12px;
+    }
+    .secrets-section::before,
+    .secrets-section::after {
+        width: 12px;
+    }
+    .secrets-main-title {
+        font-size: 22px !important;
+        line-height: 1.3;
+    }
+    .secrets-grid {
+        max-width: 100%;
+    }
+
+    /* --- JOIN --- */
     .join-content h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
-
     .join-subtitle {
-        font-size: 15px;
+        font-size: 14px;
     }
-
     .bg-outline-text {
         display: none;
     }
-
     .mockup-composition-wrapper {
-        margin-top: -30px;
+        margin-top: -20px;
         margin-bottom: 20px;
     }
-
     .deco-icon {
-        font-size: 20px;
-    }
-
-    .btn-primary-wrapper {
-        padding: 14px 25px;
-        width: 100%;
-    }
-
-    .btn-title {
         font-size: 16px;
     }
 
+    /* --- TÉMOIGNAGES --- */
+    .testimonials-title-bg {
+        font-size: 38px;
+    }
+    .testimonials-title-fg {
+        font-size: 22px;
+        margin-top: -16px;
+        margin-left: 12px;
+    }
+
+    /* --- BOUTONS --- */
+    .btn-primary-wrapper {
+        padding: 12px 16px;
+    }
+    .btn-title {
+        font-size: 15px;
+    }
     .btn-subtitle {
         font-size: 11px;
     }
 
+    /* --- FOOTER --- */
     .main-footer {
-        padding: 40px 0 30px 0;
+        padding: 40px 0 25px 0;
     }
-
     .footer-links a {
         display: block;
-        margin: 10px 0;
+        margin: 8px 0;
     }
-
     .footer-links .separator {
         display: none;
+    }
+    .copyright {
+        font-size: 10px;
+    }
+}
+
+/* ==========================================================================
+   FIX RESPONSIVE MOBILES - SECTION QUI JE SUIS (SUITE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. نرجعو السيكسيون عمودية ونعطيوها اتساع */
+    .qui-je-suis-section, 
+    #about {
+        display: flex !important;
+        flex-direction: column !important;
+        background-color: #FFFFFF !important; /* نثبتو الخلفية البيضاء */
+        padding: 40px 20px !important;
+        height: auto !important;
+    }
+
+    /* 2. حاوية النصوص (اليسار سابقاً) */
+    .qui-je-suis-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 30px !important;
+        text-align: left !important;
+    }
+
+    .qui-je-suis-content p {
+        color: #111111 !important; /* نضمنو الكُتبة كحلة واضحة */
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* 3. حاوية جوناثان (اليمن سابقاً) - نلغيو الـ Absolute */
+    .qui-je-suis-image-wrapper,
+    .about-image-container {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 340px !important; /* نجمعو العرض فالموبايل */
+        margin: 0 auto !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* المربع الرمادي لي وراه نردوه نسبي */
+    .qui-je-suis-bg-gray {
+        position: absolute !important;
+        width: 100% !important;
+        height: 80% !important;
+        bottom: 0 !important;
+        top: auto !important;
+        z-index: 1 !important;
+    }
+
+    /* 4. تصويرة جوناثان - تولي نقية وماتغطيش الكتبة */
+    .qui-je-suis-image-wrapper img,
+    .about-img {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: 380px !important;
+        object-fit: contain !important;
+        z-index: 2 !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+
+    /* 5. البلوك الصفر ديال السمية JONATHAN */
+    .qui-je-suis-name-band,
+    .jonathan-bandeau {
+        position: relative !important;
+        width: 100% !important;
+        margin-top: -5px !important; /* يلصق مع التصويرة */
+        padding: 10px 0 !important;
+        z-index: 3 !important;
+        left: auto !important;
+        transform: none !important;
+    }
+
+    /* تصغير الفونط باش ما يخرجش من الشاشة */
+    .qui-je-suis-name-band h3,
+    .jonathan-bandeau text,
+    .jonathan-text-class {
+        font-size: 45px !important; /* حجم مثالي للموبايل */
+        line-height: 1 !important;
+        letter-spacing: 1px !important;
+        text-align: center !important;
     }
 }
